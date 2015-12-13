@@ -13,7 +13,7 @@ exports.normalizeLatLng = function(coordinates){
 };
 
 exports.findNearestBusStop = function(geoInfo, clientHours, school, cb){
-	mongo.connect('mongodb://' + process.env.MONGO_SERVER_PORT_27017_TCP_ADDR + '/busstops', function(err, db){
+	mongo.connect('mongodb://admin:admin@' + process.env.MONGO_SERVER_PORT_27017_TCP_ADDR + '/busstops', function(err, db){
 		if(err){
 		 cb(err, []);
 		}else{
@@ -41,7 +41,7 @@ exports.findNearestBusStop = function(geoInfo, clientHours, school, cb){
 
 
 exports.getRoute = function(routeLabel, cb){
-	mongo.connect('mongodb://' + process.env.MONGO_SERVER_PORT_27017_TCP_ADDR + '/busstops', function(err, db){
+	mongo.connect('mongodb://admin:admin@' + process.env.MONGO_SERVER_PORT_27017_TCP_ADDR + '/busstops', function(err, db){
 		if(err) throw err;
 		console.log(routeLabel);
 		var busstops = db.collection('routes');
