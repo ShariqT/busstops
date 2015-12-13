@@ -1,5 +1,43 @@
 FROM ubuntu
 
+COPY . .
+
+RUN apt-get install -y build-essential
+
+RUN apt-get install -y python2.7 python2.7-dev
+
+RUN apt-get install -y curl
+
+RUN apt-get install -y wget
+
+RUN apt-get install -y git
+
+RUN wget https://bootstrap.pypa.io/get-pip.py
+
+RUN python2.7 get-pip.py
+
+EXPOSE 10817
+
+RUN curl --silent --location https://deb.nodesource.com/setup_4.x | sudo bash -
+
+RUN apt-get install -y nodejs
+
+RUN npm install -g bower
+
+RUN npm install
+
+RUN bower install -s --allow-root
+
+VOLUME /var/log/busstops
+
+ADD routes.json /tmp/routes.json
+
+ADD startup.sh /tmp/startup.sh
+
+
+
+
+
 # add our user and group first to make sure their IDs get assigned consistently, regardless of whatever dependencies get added
 RUN groupadd -r mongodb && useradd -r -g mongodb mongodb
 
@@ -53,39 +91,8 @@ RUN set -x \
 
 #################### the stuff above is to load in the mongo shell and mongo clients that we will use to communicate with the mongo server on the on the other container #######################################
 
-COPY . .
 
-RUN apt-get install -y build-essential
 
-RUN apt-get install -y python2.7 python2.7-dev
-
-RUN apt-get install -y curl
-
-RUN apt-get install -y wget
-
-RUN apt-get install -y git
-
-RUN wget https://bootstrap.pypa.io/get-pip.py
-
-RUN python2.7 get-pip.py
-
-EXPOSE 10817
-
-RUN curl --silent --location https://deb.nodesource.com/setup_4.x | sudo bash -
-
-RUN apt-get install -y nodejs
-
-RUN npm install -g bower
-
-RUN npm install
-
-RUN bower install -s --allow-root
-
-VOLUME /var/log/busstops
-
-ADD routes.json /tmp/routes.json
-
-ADD startup.sh /tmp/startup.sh
 
 RUN chmod +x /tmp/startup.sh
 
