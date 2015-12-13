@@ -4,7 +4,7 @@ var https = require('https');
 var app = express();
 var map_util = require('./maputils/index.js');
 var morgan = require('morgan');
-
+var fs = require('fs');
 
 
 
