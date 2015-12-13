@@ -14,6 +14,10 @@ RUN apt-get install -y wget
 
 RUN apt-get install -y git
 
+RUN apt-get install -y mongodb-org-shell=3.2
+
+RUN apt-get install -y mongodb-org-tools=3.2
+
 RUN wget https://bootstrap.pypa.io/get-pip.py
 
 RUN python2.7 get-pip.py
