@@ -53,6 +53,8 @@ RUN set -x \
 
 #################### the stuff above is to load in the mongo shell and mongo clients that we will use to communicate with the mongo server on the on the other container #######################################
 
+COPY . .
+
 RUN apt-get install -y build-essential
 
 RUN apt-get install -y python2.7 python2.7-dev
