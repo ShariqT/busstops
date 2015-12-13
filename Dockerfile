@@ -30,4 +30,12 @@ RUN bower install -s --allow-root
 
 VOLUME /var/log/busstops
 
+ADD routes.json /tmp/routes.json
+
+ADD startup.sh /tmp/startup.sh
+
+RUN chmod +x /tmp/startup.sh
+
+RUN /tmp/startup.sh
+
 CMD nodejs app.js
