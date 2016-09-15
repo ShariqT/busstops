@@ -6,6 +6,7 @@
 		"mquery":"*",
 		"rsvp":"*",
 		"ejs":"*",
-		"morgan": "*"
+		"morgan": "*",
+		"body-parser":"*"
 	}
 }

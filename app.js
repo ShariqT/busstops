@@ -6,11 +6,11 @@ var map_util = require('./maputils/index.js');
 var morgan = require('morgan');
 var fs = require('fs');
 
-
+var bodyParser = require('body-parser');
 
 app.use(express.static(__dirname + "/public"));
 app.use("/packages", express.static(__dirname + "/bower_components"));
-app.use(express.bodyParser());
+app.use(bodyParser());
 app.use("views", express.static(__dirname + "/views"));
 
 // create a write stream (in append mode)
