@@ -26,7 +26,7 @@ RUN wget https://bootstrap.pypa.io/get-pip.py
 
 RUN python2.7 get-pip.py
 
-EXPOSE 8001
+EXPOSE 10817
 
 RUN curl --silent --location https://deb.nodesource.com/setup_4.x | sudo bash -
 
