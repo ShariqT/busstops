@@ -10,7 +10,8 @@ var bodyParser = require('body-parser');
 
 app.use(express.static(__dirname + "/public"));
 app.use("/packages", express.static(__dirname + "/bower_components"));
-app.use(bodyParser());
+app.use(express.urlencoded());
+app.use(express.json());
 app.use("views", express.static(__dirname + "/views"));
 
 // create a write stream (in append mode)
