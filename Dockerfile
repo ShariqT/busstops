@@ -14,11 +14,19 @@ RUN apt-get install -y wget
 
 RUN apt-get install -y git
 
+RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv EA312927
+
+RUN echo "deb http://repo.mongodb.org/apt/ubuntu "$(lsb_release -sc)"/mongodb-org/3.2 multiverse" | tee /etc/apt/sources.list.d/mongodb.list
+
+RUN apt-get update
+
+RUN apt-get install -y mongodb-org
+
 RUN wget https://bootstrap.pypa.io/get-pip.py
 
 RUN python2.7 get-pip.py
 
-EXPOSE 10817
+EXPOSE 8001
 
 RUN curl --silent --location https://deb.nodesource.com/setup_4.x | sudo bash -
 
